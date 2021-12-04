@@ -32,7 +32,7 @@
         <ComboBox x:Name="CB_CCH" Grid.Column="3" Height="35" Margin="10,75,3,0" VerticalAlignment="Top" IsEnabled="False"/>
         <Button x:Name="B_INF" Content="Исследовать" Grid.Column="5" Height="35" Margin="3,75,10,0" VerticalAlignment="Top" Click="B_INF_Click"/>
         <TextBox x:Name="TB_OUT" Grid.Column="3" Height="47" Margin="10,115,10,0" Text="Характеристики:" TextWrapping="Wrap" VerticalAlignment="Top" GotFocus="TB_OUT_GotFocus" KeyDown="TB_OUT_KeyDown" IsReadOnly="True" TextAlignment="Center" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="TB_C" Height="18" Margin="10,92,1,0" Text="Координаты" TextWrapping="Wrap" VerticalAlignment="Top" GotFocus="TB_C_GotFocus"/>
+        <TextBox x:Name="TB_C" Height="18" Margin="10,92,1,0" Text="Координаты x и y" TextWrapping="Wrap" VerticalAlignment="Top" GotFocus="TB_C_GotFocus"/>
         <Image Grid.ColumnSpan="3" Margin="61,167,58,10" Source="/Circus.png"/>
         <Image Grid.ColumnSpan="3" Grid.Column="3" Margin="35,191,26,10" Source="/Ad.png"/>
 

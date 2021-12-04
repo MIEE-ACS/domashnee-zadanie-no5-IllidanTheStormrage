@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace TheEarthInThePorthole
 {
-    public class Circle
+    public class Circle //создаём класс и приватные радиус, длину, площадь и координаты центра
     {
         private double radius { get; set; }
         private double length { get; set; }
@@ -30,7 +30,7 @@ namespace TheEarthInThePorthole
             center = new coord(0, 0);
         }
 
-        public void AddCircle(int op, double val, coord c)
+        public void AddCircle(int op, double val, coord c) //метод для добавления
         {
             center = c;
             switch(op)
@@ -53,7 +53,7 @@ namespace TheEarthInThePorthole
             }
         }
 
-        public string Info()
+        public string Info() //метод для сбора информации
         {
             return "Радиус равен "+Math.Round(radius, 3).ToString()+", длина окружности равна "+Math.Round(length, 3).ToString()+", площадь равна "+Math.Round(area, 3).ToString()+", координаты центра: X равен "+ Math.Round(center.X, 3).ToString()+", Y равен "+ Math.Round(center.Y, 3).ToString();
         }
@@ -63,7 +63,7 @@ namespace TheEarthInThePorthole
         }
     }
 
-    public class coord
+    public class coord //создаём класс для координат - это упростит нам работу в будущем
     {
         public double X { get; private set; }
         public double Y { get; set; }
@@ -79,7 +79,8 @@ namespace TheEarthInThePorthole
     /// </summary>
     public partial class MainWindow : Window
     {
-        static void Resize(ref Circle[] array, int newSize)
+        string[] separatingStrings = { " ", ";", "; "};
+        static void Resize(ref Circle[] array, int newSize) //сделаем функцию, которая нам поможет в дальнейшем, т.к. нормальных стандартных решений я не нашёл
         {
             Circle[] newArray = new Circle[newSize];
 
@@ -92,7 +93,7 @@ namespace TheEarthInThePorthole
 
         int number = 0;
 
-        Circle[] Clown = new Circle[1];
+        Circle[] Clown = new Circle[1]; //создаём массив объектов класса
 
         public MainWindow()
         {
@@ -102,17 +103,21 @@ namespace TheEarthInThePorthole
         private void B_ADD_Click(object sender, RoutedEventArgs e)
         {
             Array.Resize(ref Clown, number+1);
-            try 
+            try //обрабатывам исключения, на всякий случай
             {
-                string[] crd = TB_C.Text.Split(' ', ',', ';');
+                string[] crd = TB_C.Text.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
                 double a = double.Parse(crd[0]);
                 double b = double.Parse(crd[1]);
-                string[] xar = TB_IN.Text.Split(' ', ',', ';');
+                string[] xar = TB_IN.Text.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
                 double c = double.Parse(xar[0]);
 
                 if (crd.Length > 2 || xar.Length > 1)
                 {
                     throw new Exception("Алё, так нельзя! Многовато циферок!");
+                }
+                if (c < 0)
+                {
+                    throw new Exception("Алё, так нельзя! Отрицательный радиус!");
                 }
             }
             catch (Exception ex)
@@ -128,7 +133,7 @@ namespace TheEarthInThePorthole
                 return;
             }
 
-            string[] coordinates = TB_C.Text.Split(' ', ',', ';');
+            string[] coordinates = TB_C.Text.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries); //теперь всё создаём, заполняем и т.д.
             double x = double.Parse(coordinates[0]);
             double y = double.Parse(coordinates[1]);
 
@@ -143,11 +148,16 @@ namespace TheEarthInThePorthole
 
         int check = 0;
 
-        private void B_INF_Click(object sender, RoutedEventArgs e)
+        private void B_INF_Click(object sender, RoutedEventArgs e) //обрабатываем информационную кнопку, в том числе и приверяем на имключения
         {
             if (CB_ACT.SelectedIndex == -1)
             {
                 MessageBox.Show("Надо выбрать действие!");
+                return;
+            }
+            if (CB_CCH.SelectedIndex == -1)
+            {
+                MessageBox.Show("Надо выбрать номер добавленного в базу круга!");
                 return;
             }
 
@@ -157,7 +167,7 @@ namespace TheEarthInThePorthole
                 TB_OUT.Text = "";
                 TB_OUT.IsReadOnly = false;
                 TB_OUT.TextAlignment = TextAlignment.Center;
-                TB_OUT.Text += "Введите координаты точки здесь и нажмите ENTER!";
+                TB_OUT.Text += "Введите координаты точки (с любым разделителем!) здесь и нажмите ENTER!";
                 check = 2;
             }
             else
@@ -168,7 +178,7 @@ namespace TheEarthInThePorthole
 
         }
 
-        private void TB_OUT_GotFocus(object sender, RoutedEventArgs e)
+        private void TB_OUT_GotFocus(object sender, RoutedEventArgs e) //здесь мы продолжаем обрабатывать поле текстбокса, хитрой перемнной контролируя этап
         {
             if (check == 2)
             {
@@ -178,13 +188,13 @@ namespace TheEarthInThePorthole
             }              
         }
 
-        private void TB_OUT_KeyDown(object sender, KeyEventArgs e)
+        private void TB_OUT_KeyDown(object sender, KeyEventArgs e) //продолжаем
         {
             if ((e.Key == Key.Enter) && (check == 1))
             {
                 try
                 {
-                    string[] crd = TB_OUT.Text.Split(' ', ',', ';');
+                    string[] crd = TB_OUT.Text.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
                     double a = double.Parse(crd[0]);
                     double b = double.Parse(crd[1]);
 
@@ -201,7 +211,7 @@ namespace TheEarthInThePorthole
                     return;
                 }
 
-                string[] coordcheck = TB_OUT.Text.Split(' ', ',', ';');
+                string[] coordcheck = TB_OUT.Text.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
 
                 TB_OUT.Text = "";
                 TB_OUT.TextAlignment = TextAlignment.Center;
@@ -219,7 +229,7 @@ namespace TheEarthInThePorthole
             }
         }
 
-        private void TB_IN_GotFocus(object sender, RoutedEventArgs e)
+        private void TB_IN_GotFocus(object sender, RoutedEventArgs e) //наводим красоту
         {
             TB_IN.Text = "";
             if (number > 0)
@@ -228,7 +238,7 @@ namespace TheEarthInThePorthole
             }          
         }
 
-        private void TB_C_GotFocus(object sender, RoutedEventArgs e)
+        private void TB_C_GotFocus(object sender, RoutedEventArgs e) //тоже наводим красоту
         {
             TB_C.Text = "";
             if (number > 0)
