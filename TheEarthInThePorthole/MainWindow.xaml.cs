@@ -246,5 +246,11 @@ namespace TheEarthInThePorthole
                 TB_XAR.Text = "";
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 window1 = new Window1();
+            window1.Show();
+        }
     }
 }

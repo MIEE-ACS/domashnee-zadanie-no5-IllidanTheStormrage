@@ -35,6 +35,7 @@
         <TextBox x:Name="TB_C" Height="18" Margin="10,92,1,0" Text="Координаты x и y" TextWrapping="Wrap" VerticalAlignment="Top" GotFocus="TB_C_GotFocus"/>
         <Image Grid.ColumnSpan="3" Margin="61,167,58,10" Source="/Circus.png"/>
         <Image Grid.ColumnSpan="3" Grid.Column="3" Margin="35,191,26,10" Source="/Ad.png"/>
+        <Button Content="О программе" Grid.Column="5" Margin="0,0,10,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="96" Click="Button_Click"/>
 
     </Grid>
 </Window>

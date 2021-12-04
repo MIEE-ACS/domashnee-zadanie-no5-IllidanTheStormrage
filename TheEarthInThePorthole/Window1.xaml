@@ -1,0 +1,13 @@
+﻿<Window x:Class="TheEarthInThePorthole.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheEarthInThePorthole"
+        mc:Ignorable="d"
+        Title="О программе" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="TB_TW_INF" Text="Правила работы с программой: &#10;&#10;1. Программа работает с веществеными числами, соответственно для разделения символов можно использовать: пробел, точку с запятой и их комбинации. Для разделения десятичной части от целой, как и в русском языке, следует использовать запятую. &#10;2. По умолчанию база кругов ничем не заполнена, и для исследования круга его нужно сначала добавить. &#10;3. Все результаты выводятся с округлением до третьего знака после запятой. &#10;&#10;P.S. Прогамма тупая, для проверки её работоспособности надо было даже написать эту страничку, потому что когда я юзал одногруппников в качестве тестеров, интерфейс оказался не юзер-фрэендли, сори(" TextWrapping="Wrap" Margin="5,10,15,10" IsReadOnly="True"/>
+
+    </Grid>
+</Window>
