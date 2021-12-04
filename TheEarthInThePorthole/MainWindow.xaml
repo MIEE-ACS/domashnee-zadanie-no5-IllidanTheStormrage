@@ -1,0 +1,40 @@
+﻿<Window x:Class="TheEarthInThePorthole.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheEarthInThePorthole"
+        mc:Ignorable="d"
+        Title="Земля в иллюминаторе" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="136*"/>
+            <ColumnDefinition Width="127*"/>
+            <ColumnDefinition Width="138*"/>
+            <ColumnDefinition Width="138*"/>
+            <ColumnDefinition Width="124*"/>
+            <ColumnDefinition Width="138*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Добавление" Height="40" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" FontWeight="Bold" FontSize="20" Grid.ColumnSpan="3"/>
+        <Label Content="Изучение" Height="40" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" FontWeight="Bold" FontSize="20" Grid.Column="3" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="TB_IN" Height="17" Margin="10,75,1,0" Text="Характеристика" TextWrapping="Wrap" VerticalAlignment="Top" GotFocus="TB_IN_GotFocus"/>
+        <ComboBox x:Name="CB_IN" Margin="3,75,4,0" VerticalAlignment="Top" Height="35" Grid.Column="1">
+            <ComboBoxItem Content="Радиус"/>
+            <ComboBoxItem Content="Длина окружности"/>
+            <ComboBoxItem Content="Площадь"/>
+        </ComboBox>
+        <Button x:Name="B_ADD" Content="Добавить" Margin="2,75,10,0" VerticalAlignment="Top" Height="35" Click="B_ADD_Click" Grid.Column="2"/>
+        <TextBox x:Name="TB_XAR" Height="47" Margin="10,115,10,0" Text="Характеристики получившегося круга:" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True" TextAlignment="Center" Grid.ColumnSpan="3"/>
+        <ComboBox x:Name="CB_ACT" Grid.Column="4" Height="35" Margin="2,75,2,0" VerticalAlignment="Top">
+            <ComboBoxItem Content="Характеристики"/>
+            <ComboBoxItem Content="Попадание точки"/>
+        </ComboBox>
+        <ComboBox x:Name="CB_CCH" Grid.Column="3" Height="35" Margin="10,75,3,0" VerticalAlignment="Top" IsEnabled="False"/>
+        <Button x:Name="B_INF" Content="Исследовать" Grid.Column="5" Height="35" Margin="3,75,10,0" VerticalAlignment="Top" Click="B_INF_Click"/>
+        <TextBox x:Name="TB_OUT" Grid.Column="3" Height="47" Margin="10,115,10,0" Text="Характеристики:" TextWrapping="Wrap" VerticalAlignment="Top" GotFocus="TB_OUT_GotFocus" KeyDown="TB_OUT_KeyDown" IsReadOnly="True" TextAlignment="Center" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="TB_C" Height="18" Margin="10,92,1,0" Text="Координаты" TextWrapping="Wrap" VerticalAlignment="Top" GotFocus="TB_C_GotFocus"/>
+        <Image Grid.ColumnSpan="3" Margin="61,167,58,10" Source="/Circus.png"/>
+        <Image Grid.ColumnSpan="3" Grid.Column="3" Margin="35,191,26,10" Source="/Ad.png"/>
+
+    </Grid>
+</Window>
